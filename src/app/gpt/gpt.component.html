@@ -1,0 +1,22 @@
+<div class="p-3">
+    <div class="card">
+        <div class="card-body">
+            <h1>Gpt component</h1>
+            <form [formGroup]="queryFormGroup" (ngSubmit)="handleAskGpt()">
+                <div class="mb-3">
+                    <label class="form-label">Query</label>
+                    <textarea id="myInput"  formControlName="query" class="form-control"></textarea>
+                </div>
+                <button onclick="clearInput()" class="btn btn-success">ask chatGpt</button>
+            </form>
+            <div class="alert alert-success">
+                <ul class="list-group" *ngIf="resp">
+                    <li class="list-group-item" *ngFor=" let choice of resp.choices">
+                        <pre>{{choice.message.content}}</pre>
+                    </li>
+                </ul>
+                {{messeges|json}}
+            </div>
+        </div>
+    </div>
+</div>
